@@ -1,2 +1,5 @@
-# AntiVirus
-test
+
+"Python ile geliştirdiğim yeni projem, aslında belirli bir kitleyi hedefleyen ve virüs gibi görünen ancak aslında bir antivirüs işlevi gören bir projedir. Hedef kitlem, internet dünyasına yeni adım atan ve deneyimi sınırlı olan bir grup insandır. Günümüzde video oyunu sektörü hızla büyümekte ve bu büyüme, tehditlerin artmasına neden olmaktadır; çünkü kitle büyüdükçe tehdit aktörlerinin ilgisini çekmektedir. Bu yüzden, bu (Anti)Virüs projesi, forumlar ve dosya paylaşım sitelerinden topladığım popüler oyunların (örneğin, Roblox, Valorant, Minecraft gibi) hile yazılımlarını hedeflemektedir. Bu hile yazılımları,çoğunlukla  zararlı yazılımları içeriyor. Bu projede, güncel veya yakın zamanda paylaşılmış olanları araştırıp topluyorum. Program çalıştırıldığında, sistemde bu dosyalardan herhangi biri varsa, zararlıyı sistemden kaldırırken, aynı zamanda USOM'un zararlı gördüğü bağlantıları hosts dosyasını değiştiren bunu yapmak içinde UAC(User Account Control) değerini düşürüp host dosyasını düzenleyip UAC'yi eski haline getiriyor.Bu aslında oldukça basit bir program. 'Anti'-Virüs terimini kullanmamın nedeni, benim gibi internetten zararlı dosyalar indirenlerin, forum sitelerinden veya dosya paylaşım sitelerinden indirdikleri dosyalara 'oyun hilesi' etiketi vererek yüklemiş olmalarıdır."
+
+
+![usom](https://github.com/swipax/AntiVirus/assets/96448186/7b755280-3f49-4147-89b6-4a20edbb8203)
