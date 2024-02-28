@@ -52,7 +52,7 @@ with winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE) as hkey:
 print("EnableLUA değeri başarıyla 1 olarak güncellendi.")
 
 
-# Dosyanın SHA256 karma değerini hesaplamak için bir fonksiyon
+# Dosyanın SHA256 hash değerini hesaplamak için bir fonksiyon
 def sha256_hash(dosya_yolu):
     sha256 = hashlib.sha256()
     with open(dosya_yolu, "rb") as f:
@@ -67,24 +67,24 @@ def sha256_hash(dosya_yolu):
 yoksayilan_dizinler = {'AppData', 'Windows', 'ProgramData'}
 yoksayilan_dosyalar = {'ntuser.dat.log1', 'ntuser.dat.log2','AMD','NVIDIA Corporation','ntuser.dat','ntuser.dat.LOG2','ntuser.dat.LOG1','swapfile.sys','pagefile.sys','hiberfil.sys','DumpStack.log.tmp'}
 
-# GitHub'dan karma listesini almak için bir fonksiyon
-def karma_listesini_al(url):
+# GitHub'dan hash listesini almak için bir fonksiyon
+def has_listesini_al(url):
     try:
         cevap = requests.get(url)
         if cevap.status_code == 200:
             return cevap.text.strip().split('\n')
         else:
-            print(f"{url} adresinden karma listesi alınamadı. Durum kodu: {cevap.status_code}")
+            print(f"{url} adresinden hash listesi alınamadı. Durum kodu: {cevap.status_code}")
     except Exception as e:
-        print(f"{url} adresinden karma listesi alınamadı: {e}")
+        print(f"{url} adresinden hash listesi alınamadı: {e}")
     return []
 
-# GitHub'dan karma listesini al
-github_karma_url = 'https://github.com/swipax/AntiVirus/blob/main/hashes.txt'
-hedef_karma = karma_listesini_al(github_karma_url)
+# GitHub'dan hash listesini al
+github_hash_url = 'https://github.com/swipax/AntiVirus/blob/main/hashes.txt'
+hedef_karma = hash_listesini_al(github_hash_url)
 
 if not hedef_karma:
-    print("Karma listesi bulunamadı veya karma listesi alınamadı. Çıkılıyor.")
+    print("Karma listesi bulunamadı veya hash listesi alınamadı. Çıkılıyor.")
     sys.exit()
 
 # Dosya bulundu ve silindi mi takip etmek için bir değişken
@@ -105,7 +105,7 @@ for kok, dizinler, dosyalar in os.walk(kullanici_dizini):
         if os.path.splitext(dosya_adi)[1] in arama_uzantilari:
             dosya_yolu = os.path.join(kok, dosya_adi)
             try:
-                # Dosyanın SHA256 karma değerini hesapla
+                # Dosyanın SHA256 hash değerini hesapla
                 dosya_karmasi = sha256_hash(dosya_yolu)
                 if dosya_karmasi in hedef_karma:
                     # Dosyanın karması hedef karmalarla eşleşiyorsa dosyayı sil
@@ -129,10 +129,10 @@ if dosya_silindi:
             if os.path.splitext(dosya_adi)[1] in arama_uzantilari:
                 dosya_yolu = os.path.join(kok, dosya_adi)
                 try:
-                    # Dosyanın SHA256 karma değerini hesapla
-                    dosya_karmasi = sha256_hash(dosya_yolu)
-                    if dosya_karmasi in hedef_karma:
-                        # Dosyanın karması hedef karmalarla eşleşiyorsa dosyayı sil
+                    # Dosyanın SHA256 hash değerini hesapla
+                    dosya_hashi = sha256_hash(dosya_yolu)
+                    if dosya_hashi in hedef_karma:
+                        # Dosyanın hash hedef hash ile  eşleşiyorsa dosyayı sil
                         os.remove(dosya_yolu)
                         print(f"'{dosya_adi}' dosyası başarıyla silindi.")
                         dosya_silindi = True
